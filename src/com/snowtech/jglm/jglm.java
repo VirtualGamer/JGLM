@@ -309,6 +309,12 @@ public final class jglm
         return result;
     }
     
+    /**
+     * Constructs a new translation mat4x4
+     *
+     * @param position the vector position.
+     * @return a new translation mat4x4
+     */
     public static mat4x4 mat4x4_translate(type_vec position)
     {
         mat4x4 result = null;
@@ -319,11 +325,17 @@ public final class jglm
             {
                 vec2d p = (vec2d) pos;
                 result = new mat4x4d(1.0);
+                result.setElement(0, 3, p.getX());
+                result.setElement(1, 3, p.getY());
+                result.setElement(2, 3, 0.0f);
             }
             else if (pos instanceof vec2f)
             {
                 vec2f p = (vec2f) pos;
                 result = new mat4x4f(1.0f);
+                result.setElement(0, 3, p.getX());
+                result.setElement(1, 3, p.getY());
+                result.setElement(2, 3, 0.0f);
             }
         }
         else if (position instanceof type_vec3)
@@ -333,12 +345,17 @@ public final class jglm
             {
                 vec3d p = (vec3d) pos;
                 result = new mat4x4d(1.0);
-                result.setElement(3, 0, p.getX());
+                result.setElement(0, 3, p.getX());
+                result.setElement(1, 3, p.getY());
+                result.setElement(2, 3, p.getZ());
             }
             else if (pos instanceof vec3f)
             {
                 vec3f p = (vec3f) pos;
                 result = new mat4x4f(1.0f);
+                result.setElement(0, 3, p.getX());
+                result.setElement(1, 3, p.getY());
+                result.setElement(2, 3, p.getZ());
             }
         }
         else if (position instanceof type_vec4)
@@ -348,11 +365,93 @@ public final class jglm
             {
                 vec4d p = (vec4d) pos;
                 result = new mat4x4d(1.0);
+                result.setElement(0, 3, p.getX());
+                result.setElement(1, 3, p.getY());
+                result.setElement(2, 3, p.getZ());
             }
             else if (pos instanceof vec4f)
             {
                 vec4f p = (vec4f) pos;
                 result = new mat4x4f(1.0f);
+                result.setElement(0, 3, p.getX());
+                result.setElement(1, 3, p.getY());
+                result.setElement(2, 3, p.getZ());
+            }
+        }
+        else
+        {
+            throw new IllegalArgumentException("unknown vector");
+        }
+        return result;
+    }
+    
+    /**
+     * Constructs a new scale mat4x4
+     *
+     * @param scale the vector position.
+     * @return a new scale mat4x4
+     */
+    public static mat4x4 mat4x4_scale(type_vec scale)
+    {
+        mat4x4 result = null;
+        if (scale instanceof type_vec2)
+        {
+            type_vec2 scal = (type_vec2) scale;
+            if (scal instanceof vec2d)
+            {
+                vec2d s = (vec2d) scal;
+                result = new mat4x4d(1.0);
+                result.setElement(0, 0, s.getX());
+                result.setElement(1, 1, s.getY());
+                result.setElement(2, 2, 1.0f);
+            }
+            else if (scal instanceof vec2f)
+            {
+                vec2f s = (vec2f) scal;
+                result = new mat4x4f(1.0f);
+                result.setElement(0, 0, s.getX());
+                result.setElement(1, 1, s.getY());
+                result.setElement(2, 2, 1.0f);
+            }
+        }
+        else if (scale instanceof type_vec3)
+        {
+            type_vec3 scal = (type_vec3) scale;
+            if (scal instanceof vec3d)
+            {
+                vec3d s = (vec3d) scal;
+                result = new mat4x4d(1.0);
+                result.setElement(0, 0, s.getX());
+                result.setElement(1, 1, s.getY());
+                result.setElement(2, 2, s.getZ());
+            }
+            else if (scal instanceof vec3f)
+            {
+                vec3f s = (vec3f) scal;
+                result = new mat4x4f(1.0f);
+                result.setElement(0, 0, s.getX());
+                result.setElement(1, 1, s.getY());
+                result.setElement(2, 2, s.getZ());
+            }
+        }
+        else if (scale instanceof type_vec4)
+        {
+            type_vec4 scal = (type_vec4) scale;
+            if (scal instanceof vec4d)
+            {
+                vec4d s = (vec4d) scal;
+                result = new mat4x4d(1.0);
+                result.setElement(0, 0, s.getX());
+                result.setElement(1, 1, s.getY());
+                result.setElement(2, 2, s.getZ());
+            }
+            else if (scal instanceof vec4f)
+            {
+                vec4f s = (vec4f) scal;
+                result = new mat4x4f(1.0f);
+                result.setElement(0, 0, s.getX());
+                result.setElement(1, 1, s.getY());
+                result.setElement(2, 2, s.getZ());
             }
         }
         else

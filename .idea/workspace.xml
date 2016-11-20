@@ -2,21 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7cc28055-45c7-4a35-80be-66ab5db5728b" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/snowtech/jglm/jglm.java" afterPath="$PROJECT_DIR$/src/com/snowtech/jglm/jglm.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/snowtech/jglm/mat2x2.java" afterPath="$PROJECT_DIR$/src/com/snowtech/jglm/mat2x2.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/snowtech/jglm/mat2x2d.java" afterPath="$PROJECT_DIR$/src/com/snowtech/jglm/mat2x2d.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/snowtech/jglm/mat2x2f.java" afterPath="$PROJECT_DIR$/src/com/snowtech/jglm/mat2x2f.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/snowtech/jglm/mat3x3.java" afterPath="$PROJECT_DIR$/src/com/snowtech/jglm/mat3x3.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/snowtech/jglm/mat3x3d.java" afterPath="$PROJECT_DIR$/src/com/snowtech/jglm/mat3x3d.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/snowtech/jglm/mat3x3f.java" afterPath="$PROJECT_DIR$/src/com/snowtech/jglm/mat3x3f.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/snowtech/jglm/mat4x4.java" afterPath="$PROJECT_DIR$/src/com/snowtech/jglm/mat4x4.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/snowtech/jglm/mat4x4d.java" afterPath="$PROJECT_DIR$/src/com/snowtech/jglm/mat4x4d.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/snowtech/jglm/mat4x4f.java" afterPath="$PROJECT_DIR$/src/com/snowtech/jglm/mat4x4f.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/snowtech/jglm/types/type_mat.java" afterPath="$PROJECT_DIR$/src/com/snowtech/jglm/types/type_mat.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/snowtech/jglm/types/type_mat2x2.java" afterPath="$PROJECT_DIR$/src/com/snowtech/jglm/types/type_mat2x2.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/snowtech/jglm/types/type_mat3x3.java" afterPath="$PROJECT_DIR$/src/com/snowtech/jglm/types/type_mat3x3.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/snowtech/jglm/types/type_mat4x4.java" afterPath="$PROJECT_DIR$/src/com/snowtech/jglm/types/type_mat4x4.java" />
     </list>
     <ignored path="JGLM.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -40,8 +26,8 @@
       <file leaf-file-name="jglm.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/snowtech/jglm/jglm.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="230">
-              <caret line="335" column="50" selection-start-line="335" selection-start-column="50" selection-end-line="335" selection-end-column="50" />
+            <state relative-caret-position="-1002">
+              <caret line="385" column="5" selection-start-line="385" selection-start-column="5" selection-end-line="385" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1121#1122#0" expanded="true" />
@@ -117,7 +103,6 @@
         <option value="$PROJECT_DIR$/src/com/snowtech/jglm/vec4.java" />
         <option value="$PROJECT_DIR$/License.md" />
         <option value="$PROJECT_DIR$/ReadMe.md" />
-        <option value="$PROJECT_DIR$/src/com/snowtech/jglm/jglm.java" />
         <option value="$PROJECT_DIR$/src/com/snowtech/jglm/types/type_mat2x2.java" />
         <option value="$PROJECT_DIR$/src/com/snowtech/jglm/types/type_mat.java" />
         <option value="$PROJECT_DIR$/src/com/snowtech/jglm/types/type_mat3x3.java" />
@@ -131,6 +116,7 @@
         <option value="$PROJECT_DIR$/src/com/snowtech/jglm/mat4x4.java" />
         <option value="$PROJECT_DIR$/src/com/snowtech/jglm/mat4x4d.java" />
         <option value="$PROJECT_DIR$/src/com/snowtech/jglm/mat4x4f.java" />
+        <option value="$PROJECT_DIR$/src/com/snowtech/jglm/jglm.java" />
       </list>
     </option>
   </component>
@@ -932,8 +918,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/snowtech/jglm/jglm.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="335" column="50" selection-start-line="335" selection-start-column="50" selection-end-line="335" selection-end-column="50" />
+        <state relative-caret-position="-1002">
+          <caret line="385" column="5" selection-start-line="385" selection-start-column="5" selection-end-line="385" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1121#1122#0" expanded="true" />
