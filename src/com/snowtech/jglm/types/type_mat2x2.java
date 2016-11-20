@@ -32,19 +32,19 @@ public interface type_mat2x2 extends type_mat
     type_mat2x2 loadIdentity();
     
     @Override
-    type_mat2x2 setElement(int column, int row, double value);
+    type_mat2x2 setElement(int row, int column, double value);
     
     @Override
-    type_mat2x2 setElement(int column, int row, float value);
+    type_mat2x2 setElement(int row, int column, float value);
     
     @Override
     type_mat2x2 multiply(type_mat other);
     
     @Override
-    double getElement(int column, int row, Double pointer);
+    double getElement(int row, int column, Double pointer);
     
     @Override
-    float getElement(int column, int row, Float pointer);
+    float getElement(int row, int column, Float pointer);
     
     @Override
     double[] getElements(double[] dest);

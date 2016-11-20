@@ -44,9 +44,9 @@ final class mat2x2f extends mat2x2
     }
     
     @Override
-    public final mat2x2f setElement(int column, int row, float value)
+    public final mat2x2f setElement(int row, int column, float value)
     {
-        this.elements[column + row * SIZE] = value;
+        this.elements[row + column * SIZE] = value;
         
         return this;
     }

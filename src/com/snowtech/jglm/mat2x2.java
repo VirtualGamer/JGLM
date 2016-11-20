@@ -55,15 +55,15 @@ public abstract class mat2x2 implements type_mat2x2
     }
     
     @Override
-    public mat2x2 setElement(int column, int row, double value)
+    public mat2x2 setElement(int row, int column, double value)
     {
-        return this.setElement(column, row, (float) value);
+        return this.setElement(row, column, (float) value);
     }
     
     @Override
-    public mat2x2 setElement(int column, int row, float value)
+    public mat2x2 setElement(int row, int column, float value)
     {
-        return this.setElement(column, row, (double) value);
+        return this.setElement(row, column, (double) value);
     }
     
     @Override
@@ -76,9 +76,9 @@ public abstract class mat2x2 implements type_mat2x2
                 double temp = 0.0;
                 for (int e = 0; e < SIZE; e++)
                 {
-                    temp += this.getElement(column, e, (Double) null) * other.getElement(e, row, (Double) null);
+                    temp += this.getElement(row, e, (Double) null) * other.getElement(e, column, (Double) null);
                 }
-                this.setElement(column, row, temp);
+                this.setElement(row, column, temp);
             }
         }
         
@@ -86,15 +86,15 @@ public abstract class mat2x2 implements type_mat2x2
     }
     
     @Override
-    public final double getElement(int column, int row, Double pointer)
+    public final double getElement(int row, int column, Double pointer)
     {
-        return pointer = this.getElements((double[]) null)[column + row * SIZE];
+        return pointer = this.getElements((double[]) null)[row + column * SIZE];
     }
     
     @Override
-    public final float getElement(int column, int row, Float pointer)
+    public final float getElement(int row, int column, Float pointer)
     {
-        return pointer = this.getElements((float[]) null)[column + row * SIZE];
+        return pointer = this.getElements((float[]) null)[row + column * SIZE];
     }
     
     @Override
@@ -116,7 +116,7 @@ public abstract class mat2x2 implements type_mat2x2
         {
             for (int row = 0; row < SIZE; row++)
             {
-                dest[column + row * SIZE] = (double) elements[column + row * SIZE];
+                dest[row + column* SIZE] = (double) elements[row + column * SIZE];
             }
         }
     
@@ -142,7 +142,7 @@ public abstract class mat2x2 implements type_mat2x2
         {
             for (int row = 0; row < SIZE; row++)
             {
-                dest[column + row * SIZE] = (float) elements[column + row * SIZE];
+                dest[row + column * SIZE] = (float) elements[row + column * SIZE];
             }
         }
         

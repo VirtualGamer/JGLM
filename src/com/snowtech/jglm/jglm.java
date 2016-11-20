@@ -15,6 +15,11 @@
  */
 package com.snowtech.jglm;
 
+import com.snowtech.jglm.types.type_vec;
+import com.snowtech.jglm.types.type_vec2;
+import com.snowtech.jglm.types.type_vec3;
+import com.snowtech.jglm.types.type_vec4;
+
 /**
  * <summary>
  * <project>JGLM</project>
@@ -192,5 +197,168 @@ public final class jglm
     public static mat4x4 mat4x4(float diagonal)
     {
         return new mat4x4f(diagonal);
+    }
+    
+    /**
+     * Constructs a new orthographic mat4x4
+     *
+     * @param left the left position of the screen.
+     * @param right the right position of the screen.
+     * @param bottom the bottom position of the screen.
+     * @param top the top the position of the screen.
+     * @param near the near plane.
+     * @param far the far plane.
+     * @return a new orthographic mat4x4
+     * @since 1.0
+     */
+    public static mat4x4 mat4x4_orthographic(double left, double right, double bottom, double top, double near, double far)
+    {
+        mat4x4 result = new mat4x4d(1.0);
+        double width = right - left;
+        double height = top - bottom;
+        double depth = far - near;
+        
+        result.setElement(0, 0, 2.0 / width);
+        result.setElement(1, 1, 2.0 / height);
+        result.setElement(2, 2,-2.0 / depth);
+        
+        result.setElement(0, 3, (-right - left) / width);
+        result.setElement(1, 3, (-top - bottom) / height);
+        result.setElement(2, 3, (-far - near) / depth);
+        
+        return result;
+    }
+    
+    /**
+     * Constructs a new orthographic mat4x4
+     *
+     * @param left the left position of the screen.
+     * @param right the right position of the screen.
+     * @param bottom the bottom position of the screen.
+     * @param top the top the position of the screen.
+     * @param near the near plane.
+     * @param far the far plane.
+     * @return a new orthographic mat4x4
+     * @since 1.0
+     */
+    public static mat4x4 mat4x4_orthographic(float left, float right, float bottom, float top, float near, float far)
+    {
+        mat4x4 result = new mat4x4f(1.0f);
+        float width = right - left;
+        float height = top - bottom;
+        float depth = far - near;
+        
+        result.setElement(0, 0, 2.0f / width);
+        result.setElement(1, 1, 2.0f / height);
+        result.setElement(2, 2,-2.0f / depth);
+        
+        result.setElement(0, 3, (-right - left) / width);
+        result.setElement(1, 3, (-top - bottom) / height);
+        result.setElement(2, 3, (-far - near) / depth);
+        
+        return result;
+    }
+    
+    /**
+     * Constructs a new perspective mat4x4
+     *
+     * @param fov the field of view.
+     * @param aspectRatio the screen's aspect ratio.
+     * @param near the near plane.
+     * @param far the far plane.
+     * @return a new perspective mat4x4
+     * @since 1.0
+     */
+    public static mat4x4 mat4x4_perspective(double fov, double aspectRatio, double near, double far)
+    {
+        mat4x4 result = new mat4x4d(1.0);
+        double tanHalfFov = 1.0f / Math.tan(Math.toRadians(0.5 * fov));
+        double range = near - far;
+    
+        result.setElement(0, 0, tanHalfFov / aspectRatio);
+        result.setElement(1, 1, tanHalfFov);
+        result.setElement(2, 2, (-near - far) / range);
+        result.setElement(3, 2, -1.0f);
+        result.setElement(2, 3, (2.0f * near * far) / range);
+        
+        return result;
+    }
+    
+    /**
+     * Constructs a new perspective mat4x4
+     *
+     * @param fov the field of view.
+     * @param aspectRatio the screen's aspect ratio.
+     * @param near the near plane.
+     * @param far the far plane.
+     * @return a new perspective mat4x4
+     * @since 1.0
+     */
+    public static mat4x4 mat4x4_perspective(float fov, float aspectRatio, float near, float far)
+    {
+        mat4x4 result = new mat4x4d(1.0);
+        float tanHalfFov = 1.0f / (float) Math.tan(Math.toRadians(0.5f * fov));
+        float range = near - far;
+    
+        result.setElement(0, 0, tanHalfFov / aspectRatio);
+        result.setElement(1, 1, tanHalfFov);
+        result.setElement(2, 2, (-near - far) / range);
+        result.setElement(3, 2, -1.0f);
+        result.setElement(2, 3, (2.0f * near * far) / range);
+        
+        return result;
+    }
+    
+    public static mat4x4 mat4x4_translate(type_vec position)
+    {
+        mat4x4 result = null;
+        if (position instanceof type_vec2)
+        {
+            type_vec2 pos = (type_vec2) position;
+            if (pos instanceof vec2d)
+            {
+                vec2d p = (vec2d) pos;
+                result = new mat4x4d(1.0);
+            }
+            else if (pos instanceof vec2f)
+            {
+                vec2f p = (vec2f) pos;
+                result = new mat4x4f(1.0f);
+            }
+        }
+        else if (position instanceof type_vec3)
+        {
+            type_vec3 pos = (type_vec3) position;
+            if (pos instanceof vec3d)
+            {
+                vec3d p = (vec3d) pos;
+                result = new mat4x4d(1.0);
+                result.setElement(3, 0, p.getX());
+            }
+            else if (pos instanceof vec3f)
+            {
+                vec3f p = (vec3f) pos;
+                result = new mat4x4f(1.0f);
+            }
+        }
+        else if (position instanceof type_vec4)
+        {
+            type_vec4 pos = (type_vec4) position;
+            if (pos instanceof vec4d)
+            {
+                vec4d p = (vec4d) pos;
+                result = new mat4x4d(1.0);
+            }
+            else if (pos instanceof vec4f)
+            {
+                vec4f p = (vec4f) pos;
+                result = new mat4x4f(1.0f);
+            }
+        }
+        else
+        {
+            throw new IllegalArgumentException("unknown vector");
+        }
+        return result;
     }
 }

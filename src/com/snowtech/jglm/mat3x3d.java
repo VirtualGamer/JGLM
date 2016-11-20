@@ -45,9 +45,9 @@ final class mat3x3d extends mat3x3
     }
     
     @Override
-    public final mat3x3d setElement(int column, int row, double value)
+    public final mat3x3d setElement(int row, int column, double value)
     {
-        this.elements[column + row * SIZE] = value;
+        this.elements[row + column * SIZE] = value;
         
         return this;
     }
