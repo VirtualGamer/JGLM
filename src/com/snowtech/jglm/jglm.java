@@ -43,6 +43,7 @@ public final class jglm
      *
      * @param x the x coordinate
      * @param y the y coordinate
+     * @return a new vec2
      * @since 1.0
      */
     public static vec2 vec2(double x, double y)
@@ -55,6 +56,7 @@ public final class jglm
      *
      * @param x the x coordinate
      * @param y the y coordinate
+     * @return a new vec2
      * @since 1.0
      */
     public static vec2 vec2(float x, float y)
@@ -68,6 +70,7 @@ public final class jglm
      * @param x the x coordinate
      * @param y the y coordinate
      * @param z the z coordinate
+     * @return a new vec3
      * @since 1.0
      */
     public static vec3 vec3(double x, double y, double z)
@@ -81,6 +84,7 @@ public final class jglm
      * @param x the x coordinate
      * @param y the y coordinate
      * @param z the z coordinate
+     * @return a new vec3
      * @since 1.0
      */
     public static vec3 vec3(float x, float y, float z)
@@ -95,6 +99,7 @@ public final class jglm
      * @param y the y coordinate
      * @param z the z coordinate
      * @param w the w coordinate
+     * @return a new vec4
      * @since 1.0
      */
     public static vec4 vec4(double x, double y, double z, double w)
@@ -109,10 +114,59 @@ public final class jglm
      * @param y the y coordinate
      * @param z the z coordinate
      * @param w the w coordinate
+     * @return a new vec4
      * @since 1.0
      */
     public static vec4 vec4(float x, float y, float z, float w)
     {
         return new vec4f(x, y, z, w);
+    }
+    
+    /**
+     * Constructs a new mat2x2
+     *
+     * @param diagonal the diagonal value.
+     * @return a new mat2x2
+     * @since 1.0
+     */
+    public static mat2x2 mat2x2(double diagonal)
+    {
+        return new mat2x2d(diagonal);
+    }
+    
+    /**
+     * Constructs a new mat2x2
+     *
+     * @param diagonal the diagonal value.
+     * @return a new mat2x2
+     * @since 1.0
+     */
+    public static mat2x2 mat2x2(float diagonal)
+    {
+        return new mat2x2f(diagonal);
+    }
+    
+    /**
+     * Constructs a new mat3x3
+     *
+     * @param diagonal the diagonal value.
+     * @return a new mat3x3
+     * @since 1.0
+     */
+    public static mat3x3 mat3x3(double diagonal)
+    {
+        return new mat3x3d(diagonal);
+    }
+    
+    /**
+     * Constructs a new mat3x3
+     *
+     * @param diagonal the diagonal value.
+     * @return a new mat3x3
+     * @since 1.0
+     */
+    public static mat3x3 mat3x3(float diagonal)
+    {
+        return new mat3x3f(diagonal);
     }
 }

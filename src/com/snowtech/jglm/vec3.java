@@ -16,7 +16,6 @@
 package com.snowtech.jglm;
 
 import com.snowtech.jglm.types.type_vec;
-import com.snowtech.jglm.types.type_vec2;
 import com.snowtech.jglm.types.type_vec3;
 
 /**
@@ -32,6 +31,12 @@ import com.snowtech.jglm.types.type_vec3;
  */
 public abstract class vec3 implements type_vec3
 {
+    // Hidden constructor
+    protected vec3()
+    {
+        throw new RuntimeException("the vec3 class is not supposed to be instantiated!");
+    }
+    
     @Override
     public abstract vec3 set(type_vec other);
     
