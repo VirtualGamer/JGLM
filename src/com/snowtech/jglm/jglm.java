@@ -19,23 +19,23 @@ package com.snowtech.jglm;
  * <summary>
  * <project>JGLM</project>
  * <package>com.snowtech.jglm</package>
- * <class>glm</class>
+ * <class>jglm</class>
  * <since>1.0</since>
  * </summary>
  *
  * @author Mark Rienstra
  * @since 1.0
  */
-public final class glm
+public final class jglm
 {
     /**
-     * Constructs a new glm class.
+     * Constructs a new jglm class.
      *
      * @since 1.0
      */
-    private glm()
+    private jglm()
     {
-        throw new RuntimeException("the glm class is not supposed to be instantiated!");
+        throw new RuntimeException("the jglm class is not supposed to be instantiated!");
     }
     
     /**

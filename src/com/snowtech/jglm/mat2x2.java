@@ -51,12 +51,16 @@ public abstract class mat2x2 implements type_mat2x2
         {
             for (int row = 0; row < 2; row++)
             {
-                float temp = 0.0f;
+                double temp = 0.0;
                 for (int e = 0; e < 2; e++)
                 {
+                    temp += this.getElement(column, e, (Double) null) * other.getElement(e, row, (Double) null);
                 }
+                this.setElement(column, row, temp);
             }
         }
+        
+        return this;
     }
     
     @Override
