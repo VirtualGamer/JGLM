@@ -26,26 +26,27 @@ package com.snowtech.jglm;
  * @author Mark Rienstra
  * @since 1.0
  */
-final class mat3x3f extends mat3x3
+final class mat4x4f extends mat4x4
 {
     public float elements[];
     
-    public mat3x3f()
+    public mat4x4f()
     {
         this.elements = new float[ARRAY_SIZE];
     }
     
-    public mat3x3f(float diagonal)
+    public mat4x4f(float diagonal)
     {
         this.elements = new float[ARRAY_SIZE];
         
         this.elements[0 + 0 * SIZE] = diagonal;
         this.elements[1 + 1 * SIZE] = diagonal;
         this.elements[2 + 2 * SIZE] = diagonal;
+        this.elements[3 + 3 * SIZE] = diagonal;
     }
     
     @Override
-    public final mat3x3f setElement(int column, int row, float value)
+    public final mat4x4f setElement(int column, int row, float value)
     {
         this.elements[column + row * SIZE] = value;
         

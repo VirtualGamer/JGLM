@@ -41,6 +41,7 @@ final class mat3x3d extends mat3x3
         
         this.elements[0 + 0 * SIZE] = diagonal;
         this.elements[1 + 1 * SIZE] = diagonal;
+        this.elements[2 + 2 * SIZE] = diagonal;
     }
     
     @Override

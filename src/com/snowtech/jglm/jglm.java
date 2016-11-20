@@ -169,4 +169,28 @@ public final class jglm
     {
         return new mat3x3f(diagonal);
     }
+    
+    /**
+     * Constructs a new mat4x4
+     *
+     * @param diagonal the diagonal value.
+     * @return a new mat4x4
+     * @since 1.0
+     */
+    public static mat4x4 mat4x4(double diagonal)
+    {
+        return new mat4x4d(diagonal);
+    }
+    
+    /**
+     * Constructs a new mat4x4
+     *
+     * @param diagonal the diagonal value.
+     * @return a new mat4x4
+     * @since 1.0
+     */
+    public static mat4x4 mat4x4(float diagonal)
+    {
+        return new mat4x4f(diagonal);
+    }
 }
