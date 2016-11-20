@@ -46,9 +46,9 @@ final class mat4x4f extends mat4x4
     }
     
     @Override
-    public final mat4x4f setElement(int column, int row, float value)
+    public final mat4x4f setElement(int row, int column, float value)
     {
-        this.elements[column + row * SIZE] = value;
+        this.elements[row + column * SIZE] = value;
         
         return this;
     }

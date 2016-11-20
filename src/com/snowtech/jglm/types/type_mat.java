@@ -39,24 +39,24 @@ public interface type_mat
     /**
      * Sets the current matrix's element at the specified position to the specified element value.
      *
-     * @param column the column position.
      * @param row the row position.
+     * @param column the column position.
      * @param value the element's new value.
      * @return the current matrix after manipulation
      * @since 1.0
      */
-    type_mat setElement(int column, int row, double value);
+    type_mat setElement(int row, int column, double value);
     
     /**
      * Sets the current matrix's element at the specified position to the specified element value.
      *
-     * @param column the column position.
      * @param row the row position.
+     * @param column the column position.
      * @param value the element's new value.
      * @return the current matrix after manipulation
      * @since 1.0
      */
-    type_mat setElement(int column, int row, float value);
+    type_mat setElement(int row, int column, float value);
     
     /**
      * Multiplies the current matrix's elements with the specified matrix's elements.
@@ -76,7 +76,7 @@ public interface type_mat
      * @return a copy of the matrix's element at the specified position.
      * @since 1.0
      */
-    double getElement(int column, int row, Double pointer);
+    double getElement(int row, int column, Double pointer);
     
     /**
      * Creates a copy of the matrix's element at the specified position and stores it into the specified pointer.
@@ -87,7 +87,7 @@ public interface type_mat
      * @return a copy of the matrix's element at the specified position.
      * @since 1.0
      */
-    float getElement(int column, int row, Float pointer);
+    float getElement(int row, int column, Float pointer);
     
     /**
      * Creates a copy of the matrix's elements and stores them into the specified array.

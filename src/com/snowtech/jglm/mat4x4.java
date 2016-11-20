@@ -69,15 +69,15 @@ public abstract class mat4x4 implements type_mat4x4
     }
     
     @Override
-    public mat4x4 setElement(int column, int row, double value)
+    public mat4x4 setElement(int row, int column, double value)
     {
-        return this.setElement(column, row, (float) value);
+        return this.setElement(row, column, (float) value);
     }
     
     @Override
-    public mat4x4 setElement(int column, int row, float value)
+    public mat4x4 setElement(int row, int column, float value)
     {
-        return this.setElement(column, row, (double) value);
+        return this.setElement(row, column, (double) value);
     }
     
     @Override
@@ -100,15 +100,15 @@ public abstract class mat4x4 implements type_mat4x4
     }
     
     @Override
-    public final double getElement(int column, int row, Double pointer)
+    public final double getElement(int row, int column, Double pointer)
     {
-        return pointer = this.getElements((double[]) null)[column + row * SIZE];
+        return pointer = this.getElements((double[]) null)[row + column * SIZE];
     }
     
     @Override
-    public final float getElement(int column, int row, Float pointer)
+    public final float getElement(int row, int column, Float pointer)
     {
-        return pointer = this.getElements((float[]) null)[column + row * SIZE];
+        return pointer = this.getElements((float[]) null)[row + column * SIZE];
     }
     
     @Override
@@ -130,7 +130,7 @@ public abstract class mat4x4 implements type_mat4x4
         {
             for (int row = 0; row < SIZE; row++)
             {
-                dest[column + row * SIZE] = (double) elements[column + row * SIZE];
+                dest[row + column * SIZE] = (double) elements[row + column * SIZE];
             }
         }
     
@@ -156,7 +156,7 @@ public abstract class mat4x4 implements type_mat4x4
         {
             for (int row = 0; row < SIZE; row++)
             {
-                dest[column + row * SIZE] = (float) elements[column + row * SIZE];
+                dest[row + column * SIZE] = (float) elements[row + column * SIZE];
             }
         }
         
@@ -182,7 +182,7 @@ public abstract class mat4x4 implements type_mat4x4
         {
             for (int row = 0; row < SIZE; row++)
             {
-                array += "" + this.getElement(column, row, (Double) null) + ", ";
+                array += "" + this.getElement(row, column, (Double) null) + ", ";
             }
         }
         array = array.substring(0, array.length() - 2) + "]";
@@ -196,7 +196,7 @@ public abstract class mat4x4 implements type_mat4x4
         {
             for (int row = 0; row < SIZE; row++)
             {
-                if (this.getElement(column, row, (Double) null) != other.getElement(column, row, (Double) null))
+                if (this.getElement(row, column, (Double) null) != other.getElement(column, row, (Double) null))
                 {
                     return false;
                 }

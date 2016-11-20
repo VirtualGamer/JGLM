@@ -32,21 +32,21 @@ final class mat2x2d extends mat2x2
     
     public mat2x2d()
     {
-        this.elements = new double[4];
+        this.elements = new double[ARRAY_SIZE];
     }
     
     public mat2x2d(double diagonal)
     {
-        this.elements = new double[4];
+        this.elements = new double[ARRAY_SIZE];
         
-        this.elements[0 + 0 * 2] = diagonal;
-        this.elements[1 + 1 * 2] = diagonal;
+        this.elements[0 + 0 * SIZE] = diagonal;
+        this.elements[1 + 1 * SIZE] = diagonal;
     }
     
     @Override
-    public final mat2x2d setElement(int column, int row, double value)
+    public final mat2x2d setElement(int row, int column, double value)
     {
-        this.elements[column + row * 2] = value;
+        this.elements[row + column* SIZE] = value;
         
         return this;
     }
@@ -63,7 +63,7 @@ final class mat2x2d extends mat2x2
             throw new IllegalArgumentException("The specified destination is too small!\n" +
                                                        "(specified length: " + dest.length + ", required length: " + ARRAY_SIZE + ")");
         }
-        System.arraycopy(this.elements, 0, dest, 0, 4);
+        System.arraycopy(this.elements, 0, dest, 0, ARRAY_SIZE);
         return dest;
     }
 }
