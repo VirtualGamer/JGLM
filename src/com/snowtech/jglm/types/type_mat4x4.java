@@ -29,6 +29,9 @@ package com.snowtech.jglm.types;
 public interface type_mat4x4 extends type_mat
 {
     @Override
+    type_mat4x4 loadIdentity();
+    
+    @Override
     type_mat4x4 setElement(int column, int row, double value);
     
     @Override
@@ -49,18 +52,14 @@ public interface type_mat4x4 extends type_mat
     @Override
     float[] getElements(float[] dest);
     
-    /**
-     * Creates a copy of the matrix's elements and stores them into a type_vec4.
-     *
-     * @return a copy of the matrix's elements as type_vec4.
-     */
+    @Override
     type_vec4[] getElements();
     
     @Override
     String toString();
     
     @Override
-    boolean equals(type_vec other);
+    boolean equals(type_mat other);
     
     @Override
     boolean equals(Object other);

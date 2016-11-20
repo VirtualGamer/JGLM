@@ -16,8 +16,8 @@
 package com.snowtech.jglm;
 
 import com.snowtech.jglm.types.type_mat;
-import com.snowtech.jglm.types.type_mat2x2;
-import com.snowtech.jglm.types.type_vec2;
+import com.snowtech.jglm.types.type_mat3x3;
+import com.snowtech.jglm.types.type_vec3;
 
 /**
  * <summary>
@@ -30,44 +30,50 @@ import com.snowtech.jglm.types.type_vec2;
  * @author Mark Rienstra
  * @since 1.0
  */
-public abstract class mat2x2 implements type_mat2x2
+public abstract class mat3x3 implements type_mat3x3
 {
     protected static final int
-            SIZE = 2,
-            ARRAY_SIZE = 4;
+            SIZE = 3,
+            ARRAY_SIZE = 9;
     
     // Hidden constructor
-    protected mat2x2()
+    protected mat3x3()
     {
         throw new RuntimeException("the mat2x2 class is not supposed to be instantiated!");
     }
     
     @Override
-    public final mat2x2 loadIdentity()
+    public final mat3x3 loadIdentity()
     {
         this.setElement(0, 0, 1.0);
         this.setElement(1, 0, 0.0);
+        this.setElement(2, 0, 0.0);
         
-        this.setElement(0, 0, 0.0);
+        this.setElement(0, 1, 0.0);
         this.setElement(1, 1, 1.0);
+        this.setElement(2, 1, 0.0);
+        
+        this.setElement(0, 2, 0.0);
+        this.setElement(1, 2, 0.0);
+        this.setElement(2, 2, 1.0);
         
         return this;
     }
     
     @Override
-    public mat2x2 setElement(int column, int row, double value)
+    public mat3x3 setElement(int column, int row, double value)
     {
         return this.setElement(column, row, (float) value);
     }
     
     @Override
-    public mat2x2 setElement(int column, int row, float value)
+    public mat3x3 setElement(int column, int row, float value)
     {
         return this.setElement(column, row, (double) value);
     }
     
     @Override
-    public final mat2x2 multiply(type_mat other)
+    public final mat3x3 multiply(type_mat other)
     {
         for (int column = 0; column < SIZE; column++)
         {
@@ -150,11 +156,12 @@ public abstract class mat2x2 implements type_mat2x2
     }
     
     @Override
-    public final type_vec2[] getElements()
+    public final type_vec3[] getElements()
     {
-        vec2[] result = new vec2[SIZE];
-        result[0] = jglm.vec2(this.getElement(0, 0, (Double) null), this.getElement(1, 0, (Double) null));
-        result[1] = jglm.vec2(this.getElement(0, 1, (Double) null), this.getElement(1, 1, (Double) null));
+        vec3[] result = new vec3[SIZE];
+        result[0] = jglm.vec3(this.getElement(0, 0, (Double) null), this.getElement(1, 0, (Double) null), this.getElement(2, 0, (Double) null));
+        result[1] = jglm.vec3(this.getElement(0, 1, (Double) null), this.getElement(1, 1, (Double) null), this.getElement(2, 1, (Double) null));
+        result[2] = jglm.vec3(this.getElement(0, 2, (Double) null), this.getElement(1, 2, (Double) null), this.getElement(2, 2, (Double) null));
         return result;
     }
     
@@ -170,7 +177,7 @@ public abstract class mat2x2 implements type_mat2x2
             }
         }
         array = array.substring(0, array.length() - 2) + "]";
-        return "mat2x2" + array;
+        return "mat3x3" + array;
     }
     
     @Override

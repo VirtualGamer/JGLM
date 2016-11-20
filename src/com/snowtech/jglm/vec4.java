@@ -32,6 +32,12 @@ import com.snowtech.jglm.types.type_vec4;
  */
 public abstract class vec4 implements type_vec4
 {
+    // Hidden constructor
+    protected vec4()
+    {
+        throw new RuntimeException("the vec4 class is not supposed to be instantiated!");
+    }
+    
     @Override
     public abstract vec4 set(type_vec other);
     

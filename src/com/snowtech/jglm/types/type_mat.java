@@ -29,12 +29,21 @@ package com.snowtech.jglm.types;
 public interface type_mat
 {
     /**
+     * Loads the identity matrix's elements into the current matrix's elements.
+     *
+     * @return the current matrix after manipulation
+     * @since 1.0
+     */
+    type_mat loadIdentity();
+    
+    /**
      * Sets the current matrix's element at the specified position to the specified element value.
      *
      * @param column the column position.
      * @param row the row position.
      * @param value the element's new value.
      * @return the current matrix after manipulation
+     * @since 1.0
      */
     type_mat setElement(int column, int row, double value);
     
@@ -45,6 +54,7 @@ public interface type_mat
      * @param row the row position.
      * @param value the element's new value.
      * @return the current matrix after manipulation
+     * @since 1.0
      */
     type_mat setElement(int column, int row, float value);
     
@@ -53,6 +63,7 @@ public interface type_mat
      *
      * @param other the other matrix to copy the elements from.
      * @return the current matrix after manipulation
+     * @since 1.0
      */
     type_mat multiply(type_mat other);
     
@@ -63,6 +74,7 @@ public interface type_mat
      * @param row the row position.
      * @param pointer the destination pointer.
      * @return a copy of the matrix's element at the specified position.
+     * @since 1.0
      */
     double getElement(int column, int row, Double pointer);
     
@@ -73,6 +85,7 @@ public interface type_mat
      * @param row the row position.
      * @param pointer the destination pointer.
      * @return a copy of the matrix's element at the specified position.
+     * @since 1.0
      */
     float getElement(int column, int row, Float pointer);
     
@@ -81,6 +94,7 @@ public interface type_mat
      *
      * @param dest the destination array.
      * @return a copy of the matrix's elements.
+     * @since 1.0
      */
     double[] getElements(double[] dest);
     
@@ -89,8 +103,17 @@ public interface type_mat
      *
      * @param dest the destination array.
      * @return a copy of the matrix's elements.
+     * @since 1.0
      */
     float[] getElements(float[] dest);
+    
+    /**
+     * Creates a copy of the matrix's elements and stores them into a type_vec array.
+     *
+     * @return a copy of the matrix's elements as type_vec array.
+     * @since 1.0
+     */
+    type_vec[] getElements();
     
     /**
      * @return a compact string representation of the matrix.
