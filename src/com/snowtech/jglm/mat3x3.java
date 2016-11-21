@@ -39,7 +39,6 @@ public abstract class mat3x3 implements type_mat3x3
     // Hidden constructor
     protected mat3x3()
     {
-        throw new RuntimeException("the mat2x2 class is not supposed to be instantiated!");
     }
     
     @Override

@@ -34,7 +34,6 @@ public abstract class vec3 implements type_vec3
     // Hidden constructor
     protected vec3()
     {
-        throw new RuntimeException("the vec3 class is not supposed to be instantiated!");
     }
     
     @Override
