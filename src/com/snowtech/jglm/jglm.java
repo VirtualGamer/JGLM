@@ -467,19 +467,77 @@ public final class jglm
      */
     public static mat4x4 mat4x4_rotate(type_vec rotation)
     {
-        mat4x4 result = null;
+        mat4x4 rx = null, ry = null, rz = null;
         if (rotation instanceof type_vec2)
         {
             type_vec2 rot = (type_vec2) rotation;
             if (rot instanceof vec2d)
             {
                 vec2d r = (vec2d) rot;
-                result = new mat4x4d(1.0);
+                rx = new mat4x4f(1.0f);
+                ry = new mat4x4f(1.0f);
+                rz = new mat4x4f(1.0f);
+                
+                double x = r.getX();
+                double y = r.getY();
+                double z = 0.0;
+    
+                double sinX = Math.sin(x);
+                double sinY = Math.sin(y);
+                double sinZ = Math.sin(z);
+                
+                double cosX = Math.cos(x);
+                double cosY = Math.cos(y);
+                double cosZ = Math.cos(z);
+                
+                rx.setElement(1, 1, cosX);
+                rx.setElement(2, 1,-sinX);
+                rx.setElement(1, 2, sinX);
+                rx.setElement(2, 2, cosX);
+                
+                ry.setElement(0, 0, cosY);
+                ry.setElement(2, 0, sinY);
+                ry.setElement(0, 2,-sinY);
+                ry.setElement(2, 2, cosY);
+                
+                rz.setElement(0, 0, cosZ);
+                rz.setElement(1, 0,-sinZ);
+                rz.setElement(0, 1, sinZ);
+                rz.setElement(1, 1, cosZ);
             }
             else if (rot instanceof vec2f)
             {
                 vec2f r = (vec2f) rot;
-                result = new mat4x4f(1.0f);
+                rx = new mat4x4f(1.0f);
+                ry = new mat4x4f(1.0f);
+                rz = new mat4x4f(1.0f);
+    
+                float x = (float) r.getX();
+                float y = (float) r.getY();
+                float z = 0.0f;
+    
+                float sinX = (float) Math.sin(x);
+                float sinY = (float) Math.sin(y);
+                float sinZ = (float) Math.sin(z);
+    
+                float cosX = (float) Math.cos(x);
+                float cosY = (float) Math.cos(y);
+                float cosZ = (float) Math.cos(z);
+    
+                rx.setElement(1, 1, cosX);
+                rx.setElement(2, 1,-sinX);
+                rx.setElement(1, 2, sinX);
+                rx.setElement(2, 2, cosX);
+    
+                ry.setElement(0, 0, cosY);
+                ry.setElement(2, 0, sinY);
+                ry.setElement(0, 2,-sinY);
+                ry.setElement(2, 2, cosY);
+    
+                rz.setElement(0, 0, cosZ);
+                rz.setElement(1, 0,-sinZ);
+                rz.setElement(0, 1, sinZ);
+                rz.setElement(1, 1, cosZ);
             }
         }
         else if (rotation instanceof type_vec3)
@@ -488,12 +546,70 @@ public final class jglm
             if (rot instanceof vec3d)
             {
                 vec3d r = (vec3d) rot;
-                result = new mat4x4d(1.0);
+                rx = new mat4x4f(1.0f);
+                ry = new mat4x4f(1.0f);
+                rz = new mat4x4f(1.0f);
+    
+                double x = r.getX();
+                double y = r.getY();
+                double z = r.getZ();
+    
+                double sinX = Math.sin(x);
+                double sinY = Math.sin(y);
+                double sinZ = Math.sin(z);
+    
+                double cosX = Math.cos(x);
+                double cosY = Math.cos(y);
+                double cosZ = Math.cos(z);
+    
+                rx.setElement(1, 1, cosX);
+                rx.setElement(2, 1,-sinX);
+                rx.setElement(1, 2, sinX);
+                rx.setElement(2, 2, cosX);
+    
+                ry.setElement(0, 0, cosY);
+                ry.setElement(2, 0, sinY);
+                ry.setElement(0, 2,-sinY);
+                ry.setElement(2, 2, cosY);
+    
+                rz.setElement(0, 0, cosZ);
+                rz.setElement(1, 0,-sinZ);
+                rz.setElement(0, 1, sinZ);
+                rz.setElement(1, 1, cosZ);
             }
             else if (rot instanceof vec3f)
             {
                 vec3f r = (vec3f) rot;
-                result = new mat4x4f(1.0f);
+                rx = new mat4x4f(1.0f);
+                ry = new mat4x4f(1.0f);
+                rz = new mat4x4f(1.0f);
+    
+                float x = (float) r.getX();
+                float y = (float) r.getY();
+                float z = (float) r.getZ();
+    
+                float sinX = (float) Math.sin(x);
+                float sinY = (float) Math.sin(y);
+                float sinZ = (float) Math.sin(z);
+    
+                float cosX = (float) Math.cos(x);
+                float cosY = (float) Math.cos(y);
+                float cosZ = (float) Math.cos(z);
+    
+                rx.setElement(1, 1, cosX);
+                rx.setElement(2, 1,-sinX);
+                rx.setElement(1, 2, sinX);
+                rx.setElement(2, 2, cosX);
+    
+                ry.setElement(0, 0, cosY);
+                ry.setElement(2, 0, sinY);
+                ry.setElement(0, 2,-sinY);
+                ry.setElement(2, 2, cosY);
+    
+                rz.setElement(0, 0, cosZ);
+                rz.setElement(1, 0,-sinZ);
+                rz.setElement(0, 1, sinZ);
+                rz.setElement(1, 1, cosZ);
             }
         }
         else if (rotation instanceof type_vec4)
@@ -502,25 +618,88 @@ public final class jglm
             if (rot instanceof vec4d)
             {
                 vec4d r = (vec4d) rot;
-                result = new mat4x4d(1.0);
+                rx = new mat4x4f(1.0f);
+                ry = new mat4x4f(1.0f);
+                rz = new mat4x4f(1.0f);
+    
+                double x = r.getX();
+                double y = r.getY();
+                double z = r.getZ();
+    
+                double sinX = Math.sin(x);
+                double sinY = Math.sin(y);
+                double sinZ = Math.sin(z);
+    
+                double cosX = Math.cos(x);
+                double cosY = Math.cos(y);
+                double cosZ = Math.cos(z);
+    
+                rx.setElement(1, 1, cosX);
+                rx.setElement(2, 1,-sinX);
+                rx.setElement(1, 2, sinX);
+                rx.setElement(2, 2, cosX);
+    
+                ry.setElement(0, 0, cosY);
+                ry.setElement(2, 0, sinY);
+                ry.setElement(0, 2,-sinY);
+                ry.setElement(2, 2, cosY);
+    
+                rz.setElement(0, 0, cosZ);
+                rz.setElement(1, 0,-sinZ);
+                rz.setElement(0, 1, sinZ);
+                rz.setElement(1, 1, cosZ);
             }
             else if (rot instanceof vec4f)
             {
                 vec4f r = (vec4f) rot;
-                result = new mat4x4f(1.0f);
+                rx = new mat4x4f(1.0f);
+                ry = new mat4x4f(1.0f);
+                rz = new mat4x4f(1.0f);
+    
+                float x = (float) r.getX();
+                float y = (float) r.getY();
+                float z = (float) r.getZ();
+    
+                float sinX = (float) Math.sin(x);
+                float sinY = (float) Math.sin(y);
+                float sinZ = (float) Math.sin(z);
+    
+                float cosX = (float) Math.cos(x);
+                float cosY = (float) Math.cos(y);
+                float cosZ = (float) Math.cos(z);
+    
+                rx.setElement(1, 1, cosX);
+                rx.setElement(2, 1,-sinX);
+                rx.setElement(1, 2, sinX);
+                rx.setElement(2, 2, cosX);
+    
+                ry.setElement(0, 0, cosY);
+                ry.setElement(2, 0, sinY);
+                ry.setElement(0, 2,-sinY);
+                ry.setElement(2, 2, cosY);
+    
+                rz.setElement(0, 0, cosZ);
+                rz.setElement(1, 0,-sinZ);
+                rz.setElement(0, 1, sinZ);
+                rz.setElement(1, 1, cosZ);
             }
         }
         else
         {
             throw new IllegalArgumentException("unknown vector");
         }
-        return result;
+        if (rx == null || ry == null || rz == null)
+        {
+            return null;
+        }
+        return rz.multiply(ry.multiply(rx));
     }
     
     /**
      * Constructs a new rotation mat4x4
      *
-     * @param axis the vector axis.
+     * @param  angle the rotation angle.
+     * @param axis the vector rotation axis.
      * @return a new rotation mat4x4
      */
     public static mat4x4 mat4x4_rotate(float angle, type_vec axis)
@@ -538,6 +717,22 @@ public final class jglm
                 double sin = Math.sin(rad);
                 double cos = Math.cos(rad);
                 double omc = 1.0 - cos;
+    
+                double x = a.getX();
+                double y = a.getY();
+                double z = 0.0;
+    
+                result.setElement(0, 0, x * omc + cos);
+                result.setElement(1, 0, y * x * omc + z * sin);
+                result.setElement(2, 0, x * z * omc - y * sin);
+    
+                result.setElement(0, 1, x * y * omc - z * sin);
+                result.setElement(1, 1, y * omc + cos);
+                result.setElement(2, 1, y * z * omc + x * sin);
+    
+                result.setElement(0, 2, x * z * omc + y * sin);
+                result.setElement(1, 2, y * z * omc - x * sin);
+                result.setElement(2, 2, z * omc + cos);
             }
             else if (ax instanceof vec2f)
             {
@@ -548,6 +743,22 @@ public final class jglm
                 float sin = (float) Math.sin(rad);
                 float cos = (float) Math.cos(rad);
                 float omc = 1.0f - cos;
+    
+                float x = (float) a.getX();
+                float y = (float) a.getY();
+                float z = 0.0f;
+    
+                result.setElement(0, 0, x * omc + cos);
+                result.setElement(1, 0, y * x * omc + z * sin);
+                result.setElement(2, 0, x * z * omc - y * sin);
+    
+                result.setElement(0, 1, x * y * omc - z * sin);
+                result.setElement(1, 1, y * omc + cos);
+                result.setElement(2, 1, y * z * omc + x * sin);
+    
+                result.setElement(0, 2, x * z * omc + y * sin);
+                result.setElement(1, 2, y * z * omc - x * sin);
+                result.setElement(2, 2, z * omc + cos);
             }
         }
         else if (axis instanceof type_vec3)
@@ -562,6 +773,22 @@ public final class jglm
                 double sin = Math.sin(rad);
                 double cos = Math.cos(rad);
                 double omc = 1.0 - cos;
+    
+                double x = a.getX();
+                double y = a.getY();
+                double z = a.getZ();
+    
+                result.setElement(0, 0, x * omc + cos);
+                result.setElement(1, 0, y * x * omc + z * sin);
+                result.setElement(2, 0, x * z * omc - y * sin);
+    
+                result.setElement(0, 1, x * y * omc - z * sin);
+                result.setElement(1, 1, y * omc + cos);
+                result.setElement(2, 1, y * z * omc + x * sin);
+    
+                result.setElement(0, 2, x * z * omc + y * sin);
+                result.setElement(1, 2, y * z * omc - x * sin);
+                result.setElement(2, 2, z * omc + cos);
             }
             else if (ax instanceof vec3f)
             {
@@ -572,6 +799,22 @@ public final class jglm
                 float sin = (float) Math.sin(rad);
                 float cos = (float) Math.cos(rad);
                 float omc = 1.0f - cos;
+    
+                float x = (float) a.getX();
+                float y = (float) a.getY();
+                float z = (float) a.getZ();
+    
+                result.setElement(0, 0, x * omc + cos);
+                result.setElement(1, 0, y * x * omc + z * sin);
+                result.setElement(2, 0, x * z * omc - y * sin);
+    
+                result.setElement(0, 1, x * y * omc - z * sin);
+                result.setElement(1, 1, y * omc + cos);
+                result.setElement(2, 1, y * z * omc + x * sin);
+    
+                result.setElement(0, 2, x * z * omc + y * sin);
+                result.setElement(1, 2, y * z * omc - x * sin);
+                result.setElement(2, 2, z * omc + cos);
             }
         }
         else if (axis instanceof type_vec4)
@@ -586,6 +829,22 @@ public final class jglm
                 double sin = Math.sin(rad);
                 double cos = Math.cos(rad);
                 double omc = 1.0 - cos;
+    
+                double x = a.getX();
+                double y = a.getY();
+                double z = a.getZ();
+    
+                result.setElement(0, 0, x * omc + cos);
+                result.setElement(1, 0, y * x * omc + z * sin);
+                result.setElement(2, 0, x * z * omc - y * sin);
+    
+                result.setElement(0, 1, x * y * omc - z * sin);
+                result.setElement(1, 1, y * omc + cos);
+                result.setElement(2, 1, y * z * omc + x * sin);
+    
+                result.setElement(0, 2, x * z * omc + y * sin);
+                result.setElement(1, 2, y * z * omc - x * sin);
+                result.setElement(2, 2, z * omc + cos);
             }
             else if (ax instanceof vec4f)
             {
@@ -596,6 +855,22 @@ public final class jglm
                 float sin = (float) Math.sin(rad);
                 float cos = (float) Math.cos(rad);
                 float omc = 1.0f - cos;
+    
+                float x = (float) a.getX();
+                float y = (float) a.getY();
+                float z = (float) a.getZ();
+    
+                result.setElement(0, 0, x * omc + cos);
+                result.setElement(1, 0, y * x * omc + z * sin);
+                result.setElement(2, 0, x * z * omc - y * sin);
+    
+                result.setElement(0, 1, x * y * omc - z * sin);
+                result.setElement(1, 1, y * omc + cos);
+                result.setElement(2, 1, y * z * omc + x * sin);
+    
+                result.setElement(0, 2, x * z * omc + y * sin);
+                result.setElement(1, 2, y * z * omc - x * sin);
+                result.setElement(2, 2, z * omc + cos);
             }
         }
         else
@@ -616,18 +891,18 @@ public final class jglm
         mat4x4 result = null;
         if (scale instanceof type_vec2)
         {
-            type_vec2 scal = (type_vec2) scale;
-            if (scal instanceof vec2d)
+            type_vec2 sca = (type_vec2) scale;
+            if (sca instanceof vec2d)
             {
-                vec2d s = (vec2d) scal;
+                vec2d s = (vec2d) sca;
                 result = new mat4x4d(1.0);
                 result.setElement(0, 0, s.getX());
                 result.setElement(1, 1, s.getY());
                 result.setElement(2, 2, 1.0f);
             }
-            else if (scal instanceof vec2f)
+            else if (sca instanceof vec2f)
             {
-                vec2f s = (vec2f) scal;
+                vec2f s = (vec2f) sca;
                 result = new mat4x4f(1.0f);
                 result.setElement(0, 0, s.getX());
                 result.setElement(1, 1, s.getY());
@@ -636,18 +911,18 @@ public final class jglm
         }
         else if (scale instanceof type_vec3)
         {
-            type_vec3 scal = (type_vec3) scale;
-            if (scal instanceof vec3d)
+            type_vec3 sca = (type_vec3) scale;
+            if (sca instanceof vec3d)
             {
-                vec3d s = (vec3d) scal;
+                vec3d s = (vec3d) sca;
                 result = new mat4x4d(1.0);
                 result.setElement(0, 0, s.getX());
                 result.setElement(1, 1, s.getY());
                 result.setElement(2, 2, s.getZ());
             }
-            else if (scal instanceof vec3f)
+            else if (sca instanceof vec3f)
             {
-                vec3f s = (vec3f) scal;
+                vec3f s = (vec3f) sca;
                 result = new mat4x4f(1.0f);
                 result.setElement(0, 0, s.getX());
                 result.setElement(1, 1, s.getY());
@@ -656,18 +931,18 @@ public final class jglm
         }
         else if (scale instanceof type_vec4)
         {
-            type_vec4 scal = (type_vec4) scale;
-            if (scal instanceof vec4d)
+            type_vec4 sca = (type_vec4) scale;
+            if (sca instanceof vec4d)
             {
-                vec4d s = (vec4d) scal;
+                vec4d s = (vec4d) sca;
                 result = new mat4x4d(1.0);
                 result.setElement(0, 0, s.getX());
                 result.setElement(1, 1, s.getY());
                 result.setElement(2, 2, s.getZ());
             }
-            else if (scal instanceof vec4f)
+            else if (sca instanceof vec4f)
             {
-                vec4f s = (vec4f) scal;
+                vec4f s = (vec4f) sca;
                 result = new mat4x4f(1.0f);
                 result.setElement(0, 0, s.getX());
                 result.setElement(1, 1, s.getY());
