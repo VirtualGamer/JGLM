@@ -33,6 +33,35 @@ import com.snowtech.jglm.types.type_vec4;
  */
 public final class jglm
 {
+    public static final int
+            JGLM_VERSION_MAJOR = 1,
+            JGLM_VERSION_MINOR = 0,
+            JGLM_VERSION_REVISION = 0;
+    private static final int JGLM_VERSION_BUILD = 0;
+    private static final String m_VersionString;
+    
+    static
+    {
+        String version = JGLM_VERSION_MAJOR + "." + JGLM_VERSION_MINOR + "." + JGLM_VERSION_REVISION + " ";
+        switch (JGLM_VERSION_BUILD)
+        {
+            case 0:
+                version += "pre-alpha";
+                break;
+            case 1:
+                version += "alpha";
+                break;
+            case 2:
+                version += "beta";
+                break;
+            case 3:
+                version += "release";
+                break;
+            default:
+        }
+        m_VersionString = version;
+    }
+    
     /**
      * Constructs a new jglm class.
      *
@@ -41,6 +70,11 @@ public final class jglm
     private jglm()
     {
         throw new RuntimeException("the jglm class is not supposed to be instantiated!");
+    }
+    
+    public static String getVersionString()
+    {
+        return m_VersionString;
     }
     
     /**
