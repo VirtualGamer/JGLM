@@ -33,10 +33,19 @@ import com.snowtech.jglm.types.type_vec4;
  */
 public final class jglm
 {
-    public static final int
-            JGLM_VERSION_MAJOR = 1,
-            JGLM_VERSION_MINOR = 0,
-            JGLM_VERSION_REVISION = 0;
+    /**
+     * The major version.
+     */
+    public static final int JGLM_VERSION_MAJOR = 1;
+    /**
+     * The minor version.
+     */
+    public static final int JGLM_VERSION_MINOR = 1;
+    /**
+     * The version revision.
+     */
+    public static final int JGLM_VERSION_REVISION = 1;
+    
     private static final int JGLM_VERSION_BUILD = 0;
     private static final String m_VersionString;
     
@@ -72,6 +81,14 @@ public final class jglm
         throw new RuntimeException("the jglm class is not supposed to be instantiated!");
     }
     
+    /**
+     * Retrieves the libraries version.
+     *
+     * @param major the major version pointer array.
+     * @param minor the minor version pointer array.
+     * @param revision the revision version pointer array.
+     * @since 1.0
+     */
     public static void jglmGetVersion(int major[], int minor[], int revision[])
     {
         if (major == null || major.length < 1)
@@ -433,6 +450,152 @@ public final class jglm
                 result.setElement(0, 3, p.getX());
                 result.setElement(1, 3, p.getY());
                 result.setElement(2, 3, p.getZ());
+            }
+        }
+        else
+        {
+            throw new IllegalArgumentException("unknown vector");
+        }
+        return result;
+    }
+    
+    /**
+     * Constructs a new rotation mat4x4
+     *
+     * @param rotation the vector rotation.
+     * @return a new rotation mat4x4
+     */
+    public static mat4x4 mat4x4_rotate(type_vec rotation)
+    {
+        mat4x4 result = null;
+        if (rotation instanceof type_vec2)
+        {
+            type_vec2 rot = (type_vec2) rotation;
+            if (rot instanceof vec2d)
+            {
+                vec2d r = (vec2d) rot;
+                result = new mat4x4d(1.0);
+            }
+            else if (rot instanceof vec2f)
+            {
+                vec2f r = (vec2f) rot;
+                result = new mat4x4f(1.0f);
+            }
+        }
+        else if (rotation instanceof type_vec3)
+        {
+            type_vec3 rot = (type_vec3) rotation;
+            if (rot instanceof vec3d)
+            {
+                vec3d r = (vec3d) rot;
+                result = new mat4x4d(1.0);
+            }
+            else if (rot instanceof vec3f)
+            {
+                vec3f r = (vec3f) rot;
+                result = new mat4x4f(1.0f);
+            }
+        }
+        else if (rotation instanceof type_vec4)
+        {
+            type_vec4 rot = (type_vec4) rotation;
+            if (rot instanceof vec4d)
+            {
+                vec4d r = (vec4d) rot;
+                result = new mat4x4d(1.0);
+            }
+            else if (rot instanceof vec4f)
+            {
+                vec4f r = (vec4f) rot;
+                result = new mat4x4f(1.0f);
+            }
+        }
+        else
+        {
+            throw new IllegalArgumentException("unknown vector");
+        }
+        return result;
+    }
+    
+    /**
+     * Constructs a new rotation mat4x4
+     *
+     * @param axis the vector axis.
+     * @return a new rotation mat4x4
+     */
+    public static mat4x4 mat4x4_rotate(float angle, type_vec axis)
+    {
+        mat4x4 result = null;
+        if (axis instanceof type_vec2)
+        {
+            type_vec2 ax = (type_vec2) axis;
+            if (ax instanceof vec2d)
+            {
+                vec2d a = (vec2d) ax;
+                result = new mat4x4d(1.0);
+    
+                double rad = Math.toRadians(angle);
+                double sin = Math.sin(rad);
+                double cos = Math.cos(rad);
+                double omc = 1.0 - cos;
+            }
+            else if (ax instanceof vec2f)
+            {
+                vec2f a = (vec2f) ax;
+                result = new mat4x4f(1.0f);
+    
+                float rad = (float) Math.toRadians(angle);
+                float sin = (float) Math.sin(rad);
+                float cos = (float) Math.cos(rad);
+                float omc = 1.0f - cos;
+            }
+        }
+        else if (axis instanceof type_vec3)
+        {
+            type_vec3 ax = (type_vec3) axis;
+            if (ax instanceof vec3d)
+            {
+                vec3d a = (vec3d) ax;
+                result = new mat4x4d(1.0);
+    
+                double rad = Math.toRadians(angle);
+                double sin = Math.sin(rad);
+                double cos = Math.cos(rad);
+                double omc = 1.0 - cos;
+            }
+            else if (ax instanceof vec3f)
+            {
+                vec3f a = (vec3f) ax;
+                result = new mat4x4f(1.0f);
+    
+                float rad = (float) Math.toRadians(angle);
+                float sin = (float) Math.sin(rad);
+                float cos = (float) Math.cos(rad);
+                float omc = 1.0f - cos;
+            }
+        }
+        else if (axis instanceof type_vec4)
+        {
+            type_vec4 ax = (type_vec4) axis;
+            if (ax instanceof vec4d)
+            {
+                vec4d a = (vec4d) ax;
+                result = new mat4x4d(1.0);
+    
+                double rad = Math.toRadians(angle);
+                double sin = Math.sin(rad);
+                double cos = Math.cos(rad);
+                double omc = 1.0 - cos;
+            }
+            else if (ax instanceof vec4f)
+            {
+                vec4f a = (vec4f) ax;
+                result = new mat4x4f(1.0f);
+    
+                float rad = (float) Math.toRadians(angle);
+                float sin = (float) Math.sin(rad);
+                float cos = (float) Math.cos(rad);
+                float omc = 1.0f - cos;
             }
         }
         else
