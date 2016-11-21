@@ -72,7 +72,30 @@ public final class jglm
         throw new RuntimeException("the jglm class is not supposed to be instantiated!");
     }
     
-    public static String getVersionString()
+    public static void jglmGetVersion(int major[], int minor[], int revision[])
+    {
+        if (major == null || major.length < 1)
+        {
+            throw new ArrayIndexOutOfBoundsException("the specified major array is too small, minimum size: 1");
+        }
+        major[0] = JGLM_VERSION_MAJOR;
+        if (minor == null || minor.length < 1)
+        {
+            throw new ArrayIndexOutOfBoundsException("the specified minor array is too small, minimum size: 1");
+        }
+        minor[0] = JGLM_VERSION_MINOR;
+        if (revision == null || revision.length < 1)
+        {
+            throw new ArrayIndexOutOfBoundsException("the specified revision array is too small, minimum size: 1");
+        }
+        revision[0] = JGLM_VERSION_REVISION;
+    }
+    
+    /**
+     * @return a compact string representation of the version.
+     * @since 1.0
+     */
+    public static String jglmGetVersionString()
     {
         return m_VersionString;
     }
