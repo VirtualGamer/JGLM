@@ -29,30 +29,41 @@ package com.snowtech.jglm.types;
 public interface type_mat
 {
     /**
-     * Sets the current matrix's element at the specified position to the specified element value.
+     * Loads the identity matrix's elements into the current matrix's elements.
      *
-     * @param column the column position.
-     * @param row the row position.
-     * @param value the element's new value.
      * @return the current matrix after manipulation
+     * @since 1.0
      */
-    type_mat setElement(int column, int row, double value);
+    type_mat loadIdentity();
     
     /**
      * Sets the current matrix's element at the specified position to the specified element value.
      *
-     * @param column the column position.
      * @param row the row position.
+     * @param column the column position.
      * @param value the element's new value.
      * @return the current matrix after manipulation
+     * @since 1.0
      */
-    type_mat setElement(int column, int row, float value);
+    type_mat setElement(int row, int column, double value);
+    
+    /**
+     * Sets the current matrix's element at the specified position to the specified element value.
+     *
+     * @param row the row position.
+     * @param column the column position.
+     * @param value the element's new value.
+     * @return the current matrix after manipulation
+     * @since 1.0
+     */
+    type_mat setElement(int row, int column, float value);
     
     /**
      * Multiplies the current matrix's elements with the specified matrix's elements.
      *
      * @param other the other matrix to copy the elements from.
      * @return the current matrix after manipulation
+     * @since 1.0
      */
     type_mat multiply(type_mat other);
     
@@ -63,8 +74,9 @@ public interface type_mat
      * @param row the row position.
      * @param pointer the destination pointer.
      * @return a copy of the matrix's element at the specified position.
+     * @since 1.0
      */
-    double getElement(int column, int row, Double pointer);
+    double getElement(int row, int column, Double pointer);
     
     /**
      * Creates a copy of the matrix's element at the specified position and stores it into the specified pointer.
@@ -73,14 +85,16 @@ public interface type_mat
      * @param row the row position.
      * @param pointer the destination pointer.
      * @return a copy of the matrix's element at the specified position.
+     * @since 1.0
      */
-    float getElement(int column, int row, Float pointer);
+    float getElement(int row, int column, Float pointer);
     
     /**
      * Creates a copy of the matrix's elements and stores them into the specified array.
      *
      * @param dest the destination array.
      * @return a copy of the matrix's elements.
+     * @since 1.0
      */
     double[] getElements(double[] dest);
     
@@ -89,8 +103,17 @@ public interface type_mat
      *
      * @param dest the destination array.
      * @return a copy of the matrix's elements.
+     * @since 1.0
      */
     float[] getElements(float[] dest);
+    
+    /**
+     * Creates a copy of the matrix's elements and stores them into a type_vec array.
+     *
+     * @return a copy of the matrix's elements as type_vec array.
+     * @since 1.0
+     */
+    type_vec[] getElements();
     
     /**
      * @return a compact string representation of the matrix.

@@ -16,8 +16,8 @@
 package com.snowtech.jglm;
 
 import com.snowtech.jglm.types.type_mat;
-import com.snowtech.jglm.types.type_mat2x2;
-import com.snowtech.jglm.types.type_vec2;
+import com.snowtech.jglm.types.type_mat4x4;
+import com.snowtech.jglm.types.type_vec4;
 
 /**
  * <summary>
@@ -30,44 +30,58 @@ import com.snowtech.jglm.types.type_vec2;
  * @author Mark Rienstra
  * @since 1.0
  */
-public abstract class mat2x2 implements type_mat2x2
+public abstract class mat4x4 implements type_mat4x4
 {
     protected static final int
-            SIZE = 2,
-            ARRAY_SIZE = 4;
+            SIZE = 4,
+            ARRAY_SIZE = 16;
     
     // Hidden constructor
-    protected mat2x2()
+    protected mat4x4()
     {
         throw new RuntimeException("the mat2x2 class is not supposed to be instantiated!");
     }
     
     @Override
-    public final mat2x2 loadIdentity()
+    public final mat4x4 loadIdentity()
     {
         this.setElement(0, 0, 1.0);
         this.setElement(1, 0, 0.0);
+        this.setElement(2, 0, 0.0);
+        this.setElement(3, 0, 0.0);
         
-        this.setElement(0, 0, 0.0);
+        this.setElement(0, 1, 0.0);
         this.setElement(1, 1, 1.0);
+        this.setElement(2, 1, 0.0);
+        this.setElement(3, 1, 0.0);
+        
+        this.setElement(0, 2, 0.0);
+        this.setElement(1, 2, 0.0);
+        this.setElement(2, 2, 1.0);
+        this.setElement(3, 2, 0.0);
+        
+        this.setElement(0, 3, 0.0);
+        this.setElement(1, 3, 0.0);
+        this.setElement(2, 3, 0.0);
+        this.setElement(3, 3, 1.0);
         
         return this;
     }
     
     @Override
-    public mat2x2 setElement(int row, int column, double value)
+    public mat4x4 setElement(int row, int column, double value)
     {
         return this.setElement(row, column, (float) value);
     }
     
     @Override
-    public mat2x2 setElement(int row, int column, float value)
+    public mat4x4 setElement(int row, int column, float value)
     {
         return this.setElement(row, column, (double) value);
     }
     
     @Override
-    public final mat2x2 multiply(type_mat other)
+    public final mat4x4 multiply(type_mat other)
     {
         for (int column = 0; column < SIZE; column++)
         {
@@ -76,9 +90,9 @@ public abstract class mat2x2 implements type_mat2x2
                 double temp = 0.0;
                 for (int e = 0; e < SIZE; e++)
                 {
-                    temp += this.getElement(row, e, (Double) null) * other.getElement(e, column, (Double) null);
+                    temp += this.getElement(column, e, (Double) null) * other.getElement(e, row, (Double) null);
                 }
-                this.setElement(row, column, temp);
+                this.setElement(column, row, temp);
             }
         }
         
@@ -116,7 +130,7 @@ public abstract class mat2x2 implements type_mat2x2
         {
             for (int row = 0; row < SIZE; row++)
             {
-                dest[row + column* SIZE] = (double) elements[row + column * SIZE];
+                dest[row + column * SIZE] = (double) elements[row + column * SIZE];
             }
         }
     
@@ -150,11 +164,13 @@ public abstract class mat2x2 implements type_mat2x2
     }
     
     @Override
-    public final type_vec2[] getElements()
+    public final type_vec4[] getElements()
     {
-        vec2[] result = new vec2[SIZE];
-        result[0] = jglm.vec2(this.getElement(0, 0, (Double) null), this.getElement(1, 0, (Double) null));
-        result[1] = jglm.vec2(this.getElement(0, 1, (Double) null), this.getElement(1, 1, (Double) null));
+        vec4[] result = new vec4[SIZE];
+        result[0] = jglm.vec4(this.getElement(0, 0, (Double) null), this.getElement(1, 0, (Double) null), this.getElement(2, 0, (Double) null), this.getElement(3, 0, (Double) null));
+        result[1] = jglm.vec4(this.getElement(0, 1, (Double) null), this.getElement(1, 1, (Double) null), this.getElement(2, 1, (Double) null), this.getElement(3, 1, (Double) null));
+        result[2] = jglm.vec4(this.getElement(0, 2, (Double) null), this.getElement(1, 2, (Double) null), this.getElement(2, 2, (Double) null), this.getElement(3, 2, (Double) null));
+        result[3] = jglm.vec4(this.getElement(0, 3, (Double) null), this.getElement(1, 3, (Double) null), this.getElement(2, 3, (Double) null), this.getElement(3, 3, (Double) null));
         return result;
     }
     
@@ -166,11 +182,11 @@ public abstract class mat2x2 implements type_mat2x2
         {
             for (int row = 0; row < SIZE; row++)
             {
-                array += "" + this.getElement(column, row, (Double) null) + ", ";
+                array += "" + this.getElement(row, column, (Double) null) + ", ";
             }
         }
         array = array.substring(0, array.length() - 2) + "]";
-        return "mat2x2" + array;
+        return "mat3x3" + array;
     }
     
     @Override
@@ -180,7 +196,7 @@ public abstract class mat2x2 implements type_mat2x2
         {
             for (int row = 0; row < SIZE; row++)
             {
-                if (this.getElement(column, row, (Double) null) != other.getElement(column, row, (Double) null))
+                if (this.getElement(row, column, (Double) null) != other.getElement(column, row, (Double) null))
                 {
                     return false;
                 }
